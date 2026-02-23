@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dplvsfi8433fp"
-path.s3tc="res://.godot/imported/DungeonTileSet_02_Normal_Atlas_Dungeon.png-6cdc3dddc3e507e1d0f64baa936936e6.s3tc.ctex"
+uid="uid://b75epffv8opyx"
+path.s3tc="res://.godot/imported/Cage_Dungeon_rusty_metal_04_diff_1k.jpg-8d50c0b2f6798ff5127bde4af98fb68d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "2ff96a6220562556ebc19d891298fe4e"
+"md5": "484602aa09a40f9b48360f3c6e1c2390"
 }
 
 [deps]
 
-source_file="res://DungeonTileSet_02_Normal_Atlas_Dungeon.png"
-dest_files=["res://.godot/imported/DungeonTileSet_02_Normal_Atlas_Dungeon.png-6cdc3dddc3e507e1d0f64baa936936e6.s3tc.ctex"]
+source_file="res://assets/models/Cage_Dungeon_rusty_metal_04_diff_1k.jpg"
+dest_files=["res://.godot/imported/Cage_Dungeon_rusty_metal_04_diff_1k.jpg-8d50c0b2f6798ff5127bde4af98fb68d.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://DungeonTileSet_02_Normal_Atlas_Dungeon.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b88pjrfcqq57j"
-path="res://.godot/imported/Cage_Dungeon.glb-8a5927d9c98b1dad9cdee5f5578e52b2.scn"
+uid="uid://dj37x1c3k5j01"
+path="res://.godot/imported/Flashlight.glb-83be9c6d128e5ce2701c36eff13a549e.scn"
 
 [deps]
 
-source_file="res://Mesh/Cage_Dungeon.glb"
-dest_files=["res://.godot/imported/Cage_Dungeon.glb-8a5927d9c98b1dad9cdee5f5578e52b2.scn"]
+source_file="res://assets/models/Flashlight.glb"
+dest_files=["res://.godot/imported/Flashlight.glb-83be9c6d128e5ce2701c36eff13a549e.scn"]
 
 [params]
 

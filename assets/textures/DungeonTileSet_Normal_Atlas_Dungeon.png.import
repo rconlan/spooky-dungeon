@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cbt2lygxmyk8k"
-path.s3tc="res://.godot/imported/DungeonTileSet_Normal_Atlas_Dungeon.png-abca50f519847cb5934cbfe378b1f130.s3tc.ctex"
+path.s3tc="res://.godot/imported/DungeonTileSet_Normal_Atlas_Dungeon.png-231e311734882a65c7ffef60c4b8bb04.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://DungeonTileSet_Normal_Atlas_Dungeon.png"
-dest_files=["res://.godot/imported/DungeonTileSet_Normal_Atlas_Dungeon.png-abca50f519847cb5934cbfe378b1f130.s3tc.ctex"]
+source_file="res://assets/textures/DungeonTileSet_Normal_Atlas_Dungeon.png"
+dest_files=["res://.godot/imported/DungeonTileSet_Normal_Atlas_Dungeon.png-231e311734882a65c7ffef60c4b8bb04.s3tc.ctex"]
 
 [params]
 

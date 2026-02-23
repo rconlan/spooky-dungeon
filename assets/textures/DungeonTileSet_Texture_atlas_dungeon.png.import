@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhl4utniid66n"
-path.s3tc="res://.godot/imported/Flashlight_rust_coarse_01_diff_1k.jpg-b714155fa934929127752ef4bbdab459.s3tc.ctex"
+uid="uid://cvihnphl1qjcg"
+path.s3tc="res://.godot/imported/DungeonTileSet_Texture_atlas_dungeon.png-230f600d1f26d1e6b1683a224e7acaae.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "35cce25287ab02eda6bae2481334094f"
+"md5": "2525c6c9805bc6ddc79ffd26ba272576"
 }
 
 [deps]
 
-source_file="res://Mesh/Flashlight_rust_coarse_01_diff_1k.jpg"
-dest_files=["res://.godot/imported/Flashlight_rust_coarse_01_diff_1k.jpg-b714155fa934929127752ef4bbdab459.s3tc.ctex"]
+source_file="res://assets/textures/DungeonTileSet_Texture_atlas_dungeon.png"
+dest_files=["res://.godot/imported/DungeonTileSet_Texture_atlas_dungeon.png-230f600d1f26d1e6b1683a224e7acaae.s3tc.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bs72ogkvdd7d6"]
 
 [ext_resource type="Script" uid="uid://b2bv8lqb3tnkf" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
-[ext_resource type="PackedScene" uid="uid://dj37x1c3k5j01" path="res://Mesh/Flashlight.glb" id="2_wr06p"]
+[ext_resource type="PackedScene" uid="uid://dj37x1c3k5j01" path="res://assets/models/Flashlight.glb" id="2_wr06p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7bhsjq3b7x1y"
-path.s3tc="res://.godot/imported/Cage_Dungeon_rusty_metal_04_diff_1k.jpg-a07fe439392c0dc301c5495e0b7af4a1.s3tc.ctex"
+uid="uid://y7qvcifkt4gt"
+path.s3tc="res://.godot/imported/DungeonTileSet_Texture_atlas_dungeon.png-69e5ca7139958278f8cc56b5be1b9dfc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "484602aa09a40f9b48360f3c6e1c2390"
+"md5": "2525c6c9805bc6ddc79ffd26ba272576"
 }
 
 [deps]
 
-source_file="res://Mesh/Cage_Dungeon_rusty_metal_04_diff_1k.jpg"
-dest_files=["res://.godot/imported/Cage_Dungeon_rusty_metal_04_diff_1k.jpg-a07fe439392c0dc301c5495e0b7af4a1.s3tc.ctex"]
+source_file="res://assets/models/DungeonTileSet_Texture_atlas_dungeon.png"
+dest_files=["res://.godot/imported/DungeonTileSet_Texture_atlas_dungeon.png-69e5ca7139958278f8cc56b5be1b9dfc.s3tc.ctex"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bhvfhkma8xpj0"
-path="res://.godot/imported/DungeonTileSet_02.glb-270ba61dcb6473d4f128197088abc1b9.scn"
+uid="uid://b88pjrfcqq57j"
+path="res://.godot/imported/Cage_Dungeon.glb-6fd2b506511f9fe6a112339b479f09f8.scn"
 
 [deps]
 
-source_file="res://DungeonTileSet_02.glb"
-dest_files=["res://.godot/imported/DungeonTileSet_02.glb-270ba61dcb6473d4f128197088abc1b9.scn"]
+source_file="res://assets/models/Cage_Dungeon.glb"
+dest_files=["res://.godot/imported/Cage_Dungeon.glb-6fd2b506511f9fe6a112339b479f09f8.scn"]
 
 [params]
 

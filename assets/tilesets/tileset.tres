@@ -1,7 +1,7 @@
 [gd_resource type="MeshLibrary" format=4 uid="uid://bsorvl1qoagc3"]
 
-[ext_resource type="Texture2D" uid="uid://cvihnphl1qjcg" path="res://DungeonTileSet_Texture_atlas_dungeon.png" id="1_t47rd"]
-[ext_resource type="Texture2D" uid="uid://cbt2lygxmyk8k" path="res://DungeonTileSet_Normal_Atlas_Dungeon.png" id="2_elp3o"]
+[ext_resource type="Texture2D" uid="uid://cvihnphl1qjcg" path="res://assets/textures/DungeonTileSet_Texture_atlas_dungeon.png" id="1_t47rd"]
+[ext_resource type="Texture2D" uid="uid://cbt2lygxmyk8k" path="res://assets/textures/DungeonTileSet_Normal_Atlas_Dungeon.png" id="2_elp3o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_753rm"]
 resource_name = "Material.001"

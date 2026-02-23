@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dj37x1c3k5j01"
-path="res://.godot/imported/Flashlight.glb-3339c7b94e314591564eb2dc4fd27c33.scn"
+uid="uid://bhvfhkma8xpj0"
+path="res://.godot/imported/DungeonTileSet_02.glb-90f05c30bd42e5ad32f5ce04883dab4c.scn"
 
 [deps]
 
-source_file="res://Mesh/Flashlight.glb"
-dest_files=["res://.godot/imported/Flashlight.glb-3339c7b94e314591564eb2dc4fd27c33.scn"]
+source_file="res://assets/models/DungeonTileSet_02.glb"
+dest_files=["res://.godot/imported/DungeonTileSet_02.glb-90f05c30bd42e5ad32f5ce04883dab4c.scn"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://i57hrcrjpq8b"
-path="res://.godot/imported/DungeonTileSet.glb-dc6bdf979feb1baed36998bd5dd340f4.scn"
+uid="uid://cxdvdbjoqhwy5"
+path="res://.godot/imported/LowPolyChain.glb-8ee7969409b83319b3080e6fef03fdd4.scn"
 
 [deps]
 
-source_file="res://DungeonTileSet.glb"
-dest_files=["res://.godot/imported/DungeonTileSet.glb-dc6bdf979feb1baed36998bd5dd340f4.scn"]
+source_file="res://assets/models/LowPolyChain.glb"
+dest_files=["res://.godot/imported/LowPolyChain.glb-8ee7969409b83319b3080e6fef03fdd4.scn"]
 
 [params]
 
