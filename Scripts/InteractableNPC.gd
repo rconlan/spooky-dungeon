@@ -69,15 +69,22 @@ func _start_dialogue():
 	current_line_index = 0
 	
 	# Store original rotation
-	original_rotation = rotation.y
+	var start_rotation = rotation.y
+	original_rotation = start_rotation
 	
 	# Rotate to face player
 	var direction_to_player = player.global_position - global_position
 	direction_to_player.y = 0
 	var target_rotation = atan2(direction_to_player.x, direction_to_player.z) + PI
 	
+	# Use lerp_angle for proper shortest-path rotation
 	var tween = create_tween()
-	tween.tween_property(self, "rotation:y", target_rotation, rotation_duration)
+	tween.tween_method(
+		func(t): rotation.y = lerp_angle(start_rotation, target_rotation, t),
+		0.0,
+		1.0,
+		rotation_duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
 	
 	# Lock player and zoom
@@ -143,9 +150,15 @@ func _end_dialogue():
 	if player and player.has_method("end_dialogue"):
 		await player.end_dialogue(zoom_duration)
 	
-	# Rotate back
+	# Rotate back using lerp_angle
+	var current_rot = rotation.y
 	var return_tween = create_tween()
-	return_tween.tween_property(self, "rotation:y", original_rotation, rotation_duration)
+	return_tween.tween_method(
+		func(t): rotation.y = lerp_angle(current_rot, original_rotation, t),
+		0.0,
+		1.0,
+		rotation_duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
 	# Show prompt if player still in range
 	if player_in_range:
@@ -156,15 +169,22 @@ func _end_dialogue():
 
 func _check_task_completion():
 	# Store original rotation
-	original_rotation = rotation.y
+	var start_rotation = rotation.y
+	original_rotation = start_rotation
 	
 	# Rotate to face player
 	var direction_to_player = player.global_position - global_position
 	direction_to_player.y = 0
 	var target_rotation = atan2(direction_to_player.x, direction_to_player.z) + PI
 	
+	# Use lerp_angle for proper shortest-path rotation
 	var tween = create_tween()
-	tween.tween_property(self, "rotation:y", target_rotation, rotation_duration)
+	tween.tween_method(
+		func(t): rotation.y = lerp_angle(start_rotation, target_rotation, t),
+		0.0,
+		1.0,
+		rotation_duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
 	
 	# Lock player and zoom
@@ -195,6 +215,8 @@ func _check_task_completion():
 			TaskManager.add_task("escort_prisoner", "Escort Prisoner 12 to Containment Block A")
 			given_task_ids.append("escort_prisoner")
 			has_given_second_tasks = true
+			# Signal the prison gate to open
+			TaskManager.open_prison_gate.emit()
 	else:
 		# Check what's incomplete
 		if has_given_second_tasks and not TaskManager.is_task_completed("escort_prisoner"):
@@ -234,9 +256,15 @@ func _check_task_completion():
 	if player and player.has_method("end_dialogue"):
 		await player.end_dialogue(zoom_duration)
 	
-	# Rotate back
+	# Rotate back using lerp_angle
+	var current_rot = rotation.y
 	var return_tween = create_tween()
-	return_tween.tween_property(self, "rotation:y", original_rotation, rotation_duration)
+	return_tween.tween_method(
+		func(t): rotation.y = lerp_angle(current_rot, original_rotation, t),
+		0.0,
+		1.0,
+		rotation_duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
 	# Show prompt if player still in range
 	if player_in_range:

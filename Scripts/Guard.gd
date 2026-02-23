@@ -58,16 +58,22 @@ func _show_dialogue():
 		return
 	
 	# Store original rotation
-	original_rotation = rotation.y
+	var start_rotation = rotation.y
+	original_rotation = start_rotation
 	
 	# Rotate guard to face player
 	var direction_to_player = player.global_position - global_position
 	direction_to_player.y = 0  # Keep rotation horizontal only
 	var target_rotation = atan2(direction_to_player.x, direction_to_player.z) + PI
 	
-	# Smoothly rotate using tween
+	# Use lerp_angle for proper shortest-path rotation
 	var tween = create_tween()
-	tween.tween_property(self, "rotation:y", target_rotation, rotation_duration)
+	tween.tween_method(
+		func(t): rotation.y = lerp_angle(start_rotation, target_rotation, t),
+		0.0,
+		1.0,
+		rotation_duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
 	
 	# Tell player to lock movement and zoom camera
@@ -93,9 +99,15 @@ func _show_dialogue():
 	if player and player.has_method("end_dialogue"):
 		await player.end_dialogue(zoom_duration)
 	
-	# Rotate back to original rotation
+	# Rotate back to original rotation using lerp_angle
+	var current_rot = rotation.y
 	var return_tween = create_tween()
-	return_tween.tween_property(self, "rotation:y", original_rotation, rotation_duration)
+	return_tween.tween_method(
+		func(t): rotation.y = lerp_angle(current_rot, original_rotation, t),
+		0.0,
+		1.0,
+		rotation_duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
 	if player_in_range:
 		dialogue_panel.visible = false

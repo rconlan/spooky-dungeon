@@ -6,6 +6,7 @@ signal task_added(task_id: String)
 signal task_completed(task_id: String)
 signal task_removed(task_id: String)
 signal key_collected(count: int)
+signal open_prison_gate  # Emitted when guard confirms keys are collected
 
 var active_tasks: Dictionary = {}  # task_id -> TaskData
 var keys_collected: int = 0
