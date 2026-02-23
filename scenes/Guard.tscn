@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bqm5v8yhx7kn5"]
+
+[ext_resource type="Script" path="res://Scripts/Guard.gd" id="1_guard"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s662t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_viwfl"]
+albedo_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_interact"]
+radius = 1.5
+height = 4.0
+
+[node name="Guard" type="Node3D"]
+script = ExtResource("1_guard")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("CapsuleMesh_s662t")
+material = SubResource("StandardMaterial3D_viwfl")
+
+[node name="InteractionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+shape = SubResource("CapsuleShape3D_interact")
+
+[node name="PromptLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+pixel_size = 0.005
+billboard = 1
+text = "Press E to interact"
+font_size = 32
+
+[node name="DialogueLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+pixel_size = 0.005
+billboard = 1
+text = "Hello World"
+font_size = 32
