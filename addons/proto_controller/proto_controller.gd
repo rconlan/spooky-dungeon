@@ -52,9 +52,11 @@ var mouse_captured : bool = false
 var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
+var in_dialogue : bool = false
 
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
+@onready var camera: Camera3D = $Head/Camera3D
 @onready var collider: CollisionShape3D = $Collider
 @onready var spotlight: SpotLight3D = $Head/Camera3D/SpotLight3D
 
@@ -64,6 +66,10 @@ func _ready() -> void:
 	look_rotation.x = head.rotation.x
 
 func _unhandled_input(event: InputEvent) -> void:
+	# Block all input during dialogue
+	if in_dialogue:
+		return
+	
 	# Mouse capturing
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		capture_mouse()
@@ -193,3 +199,78 @@ func check_input_mappings():
 	if can_toggle_light and not InputMap.has_action(input_toggle_light):
 		push_error("Light toggle disabled. No InputAction found for input_toggle_light: " + input_toggle_light)
 		can_toggle_light = false
+
+
+## Dialogue interaction methods
+func start_dialogue(zoom_fov: float = 50.0, zoom_duration: float = 0.5, target_position: Vector3 = Vector3.ZERO, look_at_target: Vector3 = Vector3.ZERO):
+	"""Lock movement and zoom camera for dialogue"""
+	in_dialogue = true
+	can_move = false
+	
+	# Move to interaction position and look at target
+	if target_position != Vector3.ZERO and look_at_target != Vector3.ZERO:
+		# Calculate direction to face the target
+		var horizontal_direction = Vector3(look_at_target.x - target_position.x, 0, look_at_target.z - target_position.z).normalized()
+		var target_rotation_y = atan2(horizontal_direction.x, horizontal_direction.z)
+		
+		# Calculate head tilt to look at target
+		var head_look_pos = target_position + Vector3(0, 1.7, 0)  # Eye height
+		var head_direction = (look_at_target - head_look_pos).normalized()
+		var target_head_rotation_x = -asin(head_direction.y)
+		
+		# Debug output
+		print("Player moving to: ", target_position)
+		print("Looking at: ", look_at_target)
+		print("Horizontal direction: ", horizontal_direction)
+		print("Target rotation Y (radians): ", target_rotation_y)
+		print("Target rotation Y (degrees): ", rad_to_deg(target_rotation_y))
+		print("Current rotation Y (degrees): ", rad_to_deg(rotation.y))
+		print("Current look_rotation.y (degrees): ", rad_to_deg(look_rotation.y))
+		
+		# Create smooth movement tween
+		var tween = create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(self, "global_position", target_position, zoom_duration)
+		# Tween the look_rotation variables instead of direct rotation
+		tween.tween_property(self, "look_rotation:y", target_rotation_y, zoom_duration)
+		tween.tween_property(self, "look_rotation:x", target_head_rotation_x, zoom_duration)
+		
+		await tween.finished
+		
+		# Apply rotations manually after tween
+		transform.basis = Basis()
+		rotate_y(look_rotation.y)
+		head.transform.basis = Basis()
+		head.rotate_x(look_rotation.x)
+		
+		# Debug: Check final rotation
+		print("AFTER TWEEN - look_rotation.y (degrees): ", rad_to_deg(look_rotation.y))
+		print("AFTER TWEEN - look_rotation.x (degrees): ", rad_to_deg(look_rotation.x))
+		print("AFTER TWEEN - Rotation Y (degrees): ", rad_to_deg(rotation.y))
+		print("AFTER TWEEN - Head rotation X (degrees): ", rad_to_deg(head.rotation.x))
+	
+	# Zoom camera
+	if camera:
+		var tween = create_tween()
+		tween.tween_property(camera, "fov", zoom_fov, zoom_duration)
+
+
+func end_dialogue(zoom_duration: float = 0.5):
+	"""Unlock movement and restore camera zoom"""
+	print("END_DIALOGUE called - Current rotation Y: ", rad_to_deg(rotation.y))
+	print("END_DIALOGUE - look_rotation.y: ", rad_to_deg(look_rotation.y))
+	
+	# Zoom out first, THEN re-enable input
+	if camera:
+		var original_fov = 75.0  # Default FOV
+		var tween = create_tween()
+		tween.tween_property(camera, "fov", original_fov, zoom_duration)
+		await tween.finished
+		print("After zoom out - Rotation Y: ", rad_to_deg(rotation.y))
+		print("After zoom out - look_rotation.y: ", rad_to_deg(look_rotation.y))
+	
+	# Re-enable input AFTER zoom completes
+	in_dialogue = false
+	can_move = true
+	print("Input re-enabled - Final rotation Y: ", rad_to_deg(rotation.y))
+	return true  # Signal completion
