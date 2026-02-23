@@ -12,41 +12,45 @@ albedo_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
 albedo_color = Color(0.8, 0.2, 0.2, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_interact"]
-radius = 1.5
-height = 4.0
+radius = 2.7358398
+height = 5.4716797
 
 [sub_resource type="Theme" id="Theme_7g1te"]
 default_font = ExtResource("2_8h1pl")
+default_font_size = 0
 
 [node name="Guard" type="Node3D" unique_id=1317992597]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_guard")
+dialogue_message = "Hello gaurd number 190823....."
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=11449131]
 mesh = SubResource("CapsuleMesh_s662t")
 material = SubResource("StandardMaterial3D_viwfl")
 
 [node name="FaceMarker" type="CSGBox3D" parent="." unique_id=2145678901]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.4927755)
 size = Vector3(0.3, 0.3, 0.15)
 material = SubResource("StandardMaterial3D_face")
 
 [node name="InteractionArea" type="Area3D" parent="." unique_id=1708889196]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=472067301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.103759766, 0)
 shape = SubResource("CapsuleShape3D_interact")
 
 [node name="PromptLabel" type="Label3D" parent="." unique_id=773521689]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5929024, 0.48902744, 0.002491355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.099226914, 0.48902744, -0.7992183)
 billboard = 1
 text = "Press E to interact"
 
 [node name="DialogueUI" type="CanvasLayer" parent="." unique_id=1447060244]
 
 [node name="DialoguePanel" type="ColorRect" parent="DialogueUI" unique_id=879490084]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.8)
@@ -68,7 +72,7 @@ theme_override_colors/font_color = Color(0.7, 0.1, 0.1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
-theme_override_font_sizes/font_size = 48
-text = "ThiccGirth"
+theme_override_font_sizes/font_size = 12
+text = "Hello there, traveler! Welcome to our village. Feel free to explore and talk to the villagers. If you need any help, just ask!"
 horizontal_alignment = 1
 vertical_alignment = 1

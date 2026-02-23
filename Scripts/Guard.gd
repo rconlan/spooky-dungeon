@@ -5,11 +5,12 @@ extends Node3D
 @onready var dialogue_panel: ColorRect = $DialogueUI/DialoguePanel
 @onready var dialogue_text: Label = $DialogueUI/DialoguePanel/DialogueText
 @onready var interaction_area: Area3D = $InteractionArea
+@export var dialogue_message: String = "Hello World"
+
 
 # Track if player is in range
 var player_in_range: bool = false
 # Dialogue settings
-var dialogue_message: String = "Hello World"
 var typing_speed: float = 0.05  # Time between each character in seconds
 var is_typing: bool = false
 
