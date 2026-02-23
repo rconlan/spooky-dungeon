@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cs6p8yweljp44"]
+
+[ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="1_dsarw"]
+[ext_resource type="Material" uid="uid://dxlnifhgft6h5" path="res://addons/kenney_prototype_tools/materials/green/material_01.tres" id="2_gno7s"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_viwfl"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s662t"]
+
+[node name="Node3D" type="Node3D" unique_id=1496560142]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2042170856]
+transform = Transform3D(1.0011696, 0, 0, 0, 1.0011696, 0, 0, 0, 1.0011696, 0, 0, 0)
+use_collision = true
+size = Vector3(25, 1, 25)
+material = ExtResource("1_dsarw")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=681514618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.870668, 0.8204863, -9.666602)
+use_collision = true
+size = Vector3(0.8330078, 0.86621094, 3.683838)
+material = ExtResource("2_gno7s")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1312133508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.870668, 3.1762931, -9.666602)
+use_collision = true
+size = Vector3(0.8330078, 0.86621094, 5.3808594)
+material = ExtResource("2_gno7s")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=163810171]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.870668, 1.6201243, -11.925703)
+use_collision = true
+size = Vector3(0.8330078, 0.86621094, 2.2418213)
+material = ExtResource("2_gno7s")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=50849208]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.870668, 1.6201243, -7.40206)
+use_collision = true
+size = Vector3(0.8330078, 0.86621094, 2.2418213)
+material = ExtResource("2_gno7s")
+
+[node name="ProtoController" parent="." unique_id=1509553934 instance=ExtResource("2_viwfl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111394525, 0.63239753, -1.8285265)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=981749637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.89775, 1.4064195, -9.826111)
+mesh = SubResource("CapsuleMesh_s662t")

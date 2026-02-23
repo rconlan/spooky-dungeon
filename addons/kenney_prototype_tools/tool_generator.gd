@@ -9,7 +9,7 @@ const textures_path := "res://addons/kenney_prototype_tools/textures"
 const materials_path := "res://addons/kenney_prototype_tools/materials/"
 const scenes_path := "res://addons/kenney_prototype_tools/scenes/"
 
-const cube_scene = preload("res://addons/tools/cube.tscn")
+const cube_scene = preload("res://addons/kenney_prototype_tools/cube.tscn")
 
 # Generates the material and the scene corresponding to this color and texture
 func generate_tex(col: String, tex_name: String):
