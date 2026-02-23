@@ -30,7 +30,7 @@ fog_light_energy = 0.1
 environment = SubResource("Environment_r3fl7")
 
 [node name="ProtoController" parent="." unique_id=136115933 instance=ExtResource("1_uu6xs")]
-transform = Transform3D(0.59921914, 0, -0.800585, 0, 1, 0, 0.800585, 0, 0.59921914, 20.115513, 0.42213786, 33.453167)
+transform = Transform3D(0.9968207, 0, 0.07967687, 0, 1, 0, -0.07967687, 0, 0.9968207, 20.750246, 0.42213786, 33.89223)
 base_speed = 3.0
 
 [node name="GridMap" type="GridMap" parent="." unique_id=349691191]
