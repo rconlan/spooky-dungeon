@@ -4,6 +4,7 @@
 [ext_resource type="MeshLibrary" uid="uid://bivmg3domiy00" path="res://assets/tilesets/tileset_03.tres" id="2_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://cxdvdbjoqhwy5" path="res://assets/models/LowPolyChain.glb" id="2_fos0i"]
 [ext_resource type="PackedScene" uid="uid://b88pjrfcqq57j" path="res://assets/models/Cage_Dungeon.glb" id="2_r0du0"]
+[ext_resource type="PackedScene" uid="uid://ce1thbucm6m0m" path="res://assets/models/PrisonGate.glb" id="5_vcsgt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_noarx"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -28,10 +29,6 @@ fog_light_energy = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1390452728]
 environment = SubResource("Environment_r3fl7")
-
-[node name="ProtoController" parent="." unique_id=136115933 instance=ExtResource("1_uu6xs")]
-transform = Transform3D(0.9968207, 0, 0.07967687, 0, 1, 0, -0.07967687, 0, 0.9968207, 20.750246, 0.42213786, 33.89223)
-base_speed = 3.0
 
 [node name="GridMap" type="GridMap" parent="." unique_id=349691191]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -69,3 +66,9 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 21.8
 
 [node name="LowPolyChain4" parent="." unique_id=1293735276 instance=ExtResource("2_fos0i")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 19.520752, 2.3279495, 19.937757)
+
+[node name="PrisonGate" parent="." unique_id=786367606 instance=ExtResource("5_vcsgt")]
+transform = Transform3D(1.4156309, 0, 0, 0, 0.89796716, 0, 0, 0, 1.1255723, 20.97059, 0.07676792, 27.95618)
+
+[node name="ProtoController" parent="." unique_id=1509553934 instance=ExtResource("1_uu6xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.804747, 0.5524944, 34.18856)

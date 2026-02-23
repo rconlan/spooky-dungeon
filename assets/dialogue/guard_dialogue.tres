@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://bcgmi67edwih0"]
+
+[ext_resource type="Script" uid="uid://d2e3n1gh871ko" path="res://Scripts/DialogueData.gd" id="1_dialogue"]
+
+[resource]
+script = ExtResource("1_dialogue")
+character_name = "Guard"
+dialogue_lines = Array[String](["Hello Guard 287...", "Collect your keys before you enter into the containment zone"])
+tasks_to_give = Array[String](["find_keys:Find keys in Guard 287's room"])

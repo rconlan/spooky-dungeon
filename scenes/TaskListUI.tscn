@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cntu0q7ajhxck"]
+
+[ext_resource type="Script" path="res://Scripts/TaskListUI.gd" id="1_8xmvb"]
+
+[node name="TaskListUI" type="CanvasLayer"]
+
+[node name="TaskUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_8xmvb")
+
+[node name="Panel" type="PanelContainer" parent="TaskUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 10.0
+grow_horizontal = 0
+mouse_filter = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TaskUI/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TaskUI/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="TaskUI/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "TASKS"
+horizontal_alignment = 1
+
+[node name="Separator" type="HSeparator" parent="TaskUI/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bmrko88eixl1d"]
+
+[ext_resource type="PackedScene" uid="uid://imaq74k1c3ua" path="res://assets/models/Key.glb" id="1_key_model"]
+[ext_resource type="Script" uid="uid://crc2oyya7pu4e" path="res://Scripts/KeyPickup.gd" id="2_key_script"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
+radius = 1.5
+
+[node name="Key" type="Node3D" unique_id=882443755]
+script = ExtResource("2_key_script")
+
+[node name="KeyModel" parent="." unique_id=73712246 instance=ExtResource("1_key_model")]
+
+[node name="InteractionArea" type="Area3D" parent="." unique_id=536364886]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=592946394]
+shape = SubResource("SphereShape3D_interact")
+
+[node name="PromptLabel" type="Label3D" parent="." unique_id=474522503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28154945, 0.017506361, 0.17251772)
+billboard = 1
+text = "Press E to collect"
+outline_size = 8

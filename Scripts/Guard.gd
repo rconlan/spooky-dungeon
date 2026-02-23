@@ -12,6 +12,7 @@ extends Node3D
 @export var zoom_fov: float = 50.0  # Lower FOV = more zoom
 @export var zoom_duration: float = 0.5  # Time to zoom in/out
 @export var interaction_distance: float = 2.0  # How far in front of guard to position player
+@export var rotation_duration: float = 0.3  # Time to rotate to face player
 
 # Track if player is in range
 var player_in_range: bool = false
@@ -19,6 +20,7 @@ var player: CharacterBody3D = null
 # Dialogue settings
 var typing_speed: float = 0.05  # Time between each character in seconds
 var is_typing: bool = false
+var original_rotation: float = 0.0  # Store original Y rotation
 
 func _ready():
 	# Hide both labels initially
@@ -55,24 +57,22 @@ func _show_dialogue():
 	if is_typing:
 		return
 	
-	# Calculate interaction position in front of the guard
-	# Use the guard's -Z axis as forward (standard Godot convention)
-	var guard_forward = -global_transform.basis.z
-	guard_forward.y = 0  # Keep movement horizontal only
-	guard_forward = guard_forward.normalized()
+	# Store original rotation
+	original_rotation = rotation.y
 	
-	var interaction_pos = global_position + guard_forward * interaction_distance
-	interaction_pos.y = player.global_position.y  # Keep at player's current height
+	# Rotate guard to face player
+	var direction_to_player = player.global_position - global_position
+	direction_to_player.y = 0  # Keep rotation horizontal only
+	var target_rotation = atan2(direction_to_player.x, direction_to_player.z) + PI
 	
-	# Debug: Print to verify positions
-	print("Guard position: ", global_position)
-	print("Guard forward: ", guard_forward)
-	print("Interaction position: ", interaction_pos)
-	print("Look at target: ", global_position + Vector3(0, 0.5, 0))
+	# Smoothly rotate using tween
+	var tween = create_tween()
+	tween.tween_property(self, "rotation:y", target_rotation, rotation_duration)
+	await tween.finished
 	
-	# Tell player to move to position, look at guard, and zoom camera
+	# Tell player to lock movement and zoom camera
 	if player and player.has_method("start_dialogue"):
-		player.start_dialogue(zoom_fov, zoom_duration, interaction_pos, global_position + Vector3(0, 0.5, 0))
+		player.start_dialogue(zoom_fov, zoom_duration)
 	
 	# Hide prompt and show dialogue panel
 	prompt_label.visible = false
@@ -81,22 +81,21 @@ func _show_dialogue():
 	
 	# Type out the text character by character
 	is_typing = true
-	print("Starting text typewriter...")
 	for i in range(dialogue_message.length()):
 		dialogue_text.text += dialogue_message[i]
 		await get_tree().create_timer(typing_speed).timeout
 	is_typing = false
-	print("Text finished typing")
-	print("Player rotation Y: ", rad_to_deg(player.rotation.y))
-	print("Player look_rotation.y: ", rad_to_deg(player.look_rotation.y))
 	
 	# Auto-hide dialogue after a few seconds
 	await get_tree().create_timer(3.0).timeout
-	print("Before end_dialogue - Player rotation Y: ", rad_to_deg(player.rotation.y))
 	
 	# Tell player to unlock movement and zoom out
 	if player and player.has_method("end_dialogue"):
 		await player.end_dialogue(zoom_duration)
+	
+	# Rotate back to original rotation
+	var return_tween = create_tween()
+	return_tween.tween_property(self, "rotation:y", original_rotation, rotation_duration)
 	
 	if player_in_range:
 		dialogue_panel.visible = false

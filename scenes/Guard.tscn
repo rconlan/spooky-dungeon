@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://ethg032u8pmp"]
 
-[ext_resource type="Script" uid="uid://rtl0nflyh2id" path="res://Scripts/Guard.gd" id="1_guard"]
+[ext_resource type="Script" uid="uid://b0hk8ykc5xsem" path="res://Scripts/InteractableNPC.gd" id="1_npc"]
 [ext_resource type="FontFile" uid="uid://ierhtwwljrq" path="res://assets/fonts/SpecialElite-Regular.ttf" id="2_8h1pl"]
+[ext_resource type="Resource" uid="uid://bcgmi67edwih0" path="res://assets/dialogue/guard_dialogue.tres" id="2_dialogue"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s662t"]
 
@@ -21,8 +22,8 @@ default_font_size = 0
 
 [node name="Guard" type="Node3D" unique_id=1317992597]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-script = ExtResource("1_guard")
-dialogue_message = "Hello gaurd number 190823....."
+script = ExtResource("1_npc")
+dialogue_data = ExtResource("2_dialogue")
 zoom_duration = 0.6
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=11449131]
@@ -57,15 +58,16 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.8)
 
 [node name="DialogueText" type="Label" parent="DialogueUI/DialoguePanel" unique_id=1664965229]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -50.0
-offset_right = 400.0
-offset_bottom = 50.0
+offset_left = -128.0
+offset_top = -24.0
+offset_right = 122.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_7g1te")
@@ -77,3 +79,4 @@ theme_override_font_sizes/font_size = 12
 text = "This text is overwritten in the Guard->Dialogue Message public variable"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3

@@ -4,7 +4,9 @@
 [ext_resource type="Material" uid="uid://dxlnifhgft6h5" path="res://addons/kenney_prototype_tools/materials/green/material_01.tres" id="2_gno7s"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_viwfl"]
 [ext_resource type="PackedScene" uid="uid://ethg032u8pmp" path="res://scenes/Guard.tscn" id="4_guard"]
-[ext_resource type="PackedScene" path="res://scenes/PauseMenu.tscn" id="5_pause"]
+[ext_resource type="PackedScene" uid="uid://cy5h7k8mam0n1" path="res://scenes/PauseMenu.tscn" id="5_pause"]
+[ext_resource type="PackedScene" uid="uid://cntu0q7ajhxck" path="res://scenes/TaskListUI.tscn" id="6_tasklist"]
+[ext_resource type="PackedScene" path="res://scenes/Key.tscn" id="7_31777"]
 
 [node name="Node3D" type="Node3D" unique_id=1496560142]
 
@@ -38,6 +40,18 @@ use_collision = true
 size = Vector3(0.8330078, 0.86621094, 2.2418213)
 material = ExtResource("2_gno7s")
 
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=1625736529]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.870668, 1.6201243, -4.6837897)
+use_collision = true
+size = Vector3(0.8330078, 3.3833008, 2.2418213)
+material = ExtResource("2_gno7s")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="." unique_id=585112962]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.057629, 1.4322168, -4.6893883)
+use_collision = true
+size = Vector3(0.8330078, 3.3833008, 0.2159729)
+material = ExtResource("2_gno7s")
+
 [node name="ProtoController" parent="." unique_id=1509553934 instance=ExtResource("2_viwfl")]
 transform = Transform3D(0.030817593, 0, -0.999525, 0, 1, 0, 0.999525, 0, 0.030817593, 6.707566, 0.63239753, -9.822474)
 
@@ -45,3 +59,14 @@ transform = Transform3D(0.030817593, 0, -0.999525, 0, 1, 0, 0.999525, 0, 0.03081
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.89775, 1.4064195, -9.826111)
 
 [node name="PauseMenu" parent="." unique_id=1184703678 instance=ExtResource("5_pause")]
+
+[node name="TaskListUI" parent="." unique_id=1982743567 instance=ExtResource("6_tasklist")]
+
+[node name="Key" parent="." unique_id=1240625678 instance=ExtResource("7_31777")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93002, 1.6258126, -5.84569)
+
+[node name="Key2" parent="." unique_id=1931839158 instance=ExtResource("7_31777")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93002, 1.6258126, -4.941332)
+
+[node name="Key3" parent="." unique_id=1863558422 instance=ExtResource("7_31777")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93002, 1.6258126, -3.5243704)
