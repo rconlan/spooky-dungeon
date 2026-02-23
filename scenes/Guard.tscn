@@ -73,6 +73,6 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 12
-text = "Hello there, traveler! Welcome to our village. Feel free to explore and talk to the villagers. If you need any help, just ask!"
+text = "This text is overwritten in the Guard->Dialogue Message public variable"
 horizontal_alignment = 1
 vertical_alignment = 1
