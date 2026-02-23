@@ -8,6 +8,9 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_viwfl"]
 albedo_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_face"]
+albedo_color = Color(0.8, 0.2, 0.2, 1)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_interact"]
 radius = 1.5
 height = 4.0
@@ -22,20 +25,20 @@ script = ExtResource("1_guard")
 mesh = SubResource("CapsuleMesh_s662t")
 material = SubResource("StandardMaterial3D_viwfl")
 
+[node name="FaceMarker" type="CSGBox3D" parent="." unique_id=2145678901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.35)
+size = Vector3(0.3, 0.3, 0.15)
+material = SubResource("StandardMaterial3D_face")
+
 [node name="InteractionArea" type="Area3D" parent="." unique_id=1708889196]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=472067301]
 shape = SubResource("CapsuleShape3D_interact")
 
 [node name="PromptLabel" type="Label3D" parent="." unique_id=773521689]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5929024, 0.48902744, 0.002491355)
 billboard = 1
 text = "Press E to interact"
-
-[node name="DialogueLabel" type="Label3D" parent="." unique_id=1622315521]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-billboard = 1
-text = "Hello World"
 
 [node name="DialogueUI" type="CanvasLayer" parent="." unique_id=1447060244]
 
