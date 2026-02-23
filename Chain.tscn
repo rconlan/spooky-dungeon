@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dmv2msj8v5ho8"]
+
+[ext_resource type="PackedScene" uid="uid://cxdvdbjoqhwy5" path="res://Mesh/LowPolyChain.glb" id="1_yl11u"]
+
+[node name="LowPolyChain" unique_id=2129361817 instance=ExtResource("1_yl11u")]

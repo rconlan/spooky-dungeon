@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bs72ogkvdd7d6"]
+
+[ext_resource type="Script" uid="uid://b2bv8lqb3tnkf" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
+[ext_resource type="PackedScene" uid="uid://dj37x1c3k5j01" path="res://Mesh/Flashlight.glb" id="2_wr06p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
+albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ucva2"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iof21"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wr06p"]
+size = Vector3(0.20214844, 0.21508789, 0.26660156)
+
+[node name="ProtoController" type="CharacterBody3D" unique_id=1509553934]
+script = ExtResource("1_ucva2")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1013458120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+material_override = SubResource("StandardMaterial3D_iof21")
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_ucva2")
+
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=54372923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_iof21")
+
+[node name="Head" type="Node3D" parent="." unique_id=252044873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1779784907]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera3D" unique_id=1126927620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39089346, -0.3767979, -1.1390096)
+light_color = Color(0.83137256, 0.73333335, 0.6745098, 1)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 15.299374
+spot_angle = 39.665565
+
+[node name="Flashlight" parent="Head/Camera3D" unique_id=700145242 instance=ExtResource("2_wr06p")]
+transform = Transform3D(0.023629569, 0, 0.9997208, 0, 1, 0, -0.9997208, 0, 0.023629569, 0.39327872, -0.3450005, -0.51051915)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/Flashlight" unique_id=1648602882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36443615, 0, -0.008613855)
+shape = SubResource("BoxShape3D_wr06p")
