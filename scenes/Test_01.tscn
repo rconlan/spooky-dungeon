@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs6p8yweljp44"]
+[gd_scene format=3 uid="uid://cs6p8yweljp44"]
 
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="1_dsarw"]
 [ext_resource type="Material" uid="uid://dxlnifhgft6h5" path="res://addons/kenney_prototype_tools/materials/green/material_01.tres" id="2_gno7s"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_viwfl"]
-[ext_resource type="PackedScene" uid="uid://bqm5v8yhx7kn5" path="res://scenes/Guard.tscn" id="4_guard"]
+[ext_resource type="PackedScene" path="res://scenes/Guard.tscn" id="4_guard"]
 
 [node name="Node3D" type="Node3D" unique_id=1496560142]
 
