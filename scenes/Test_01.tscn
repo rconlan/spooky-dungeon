@@ -6,15 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://ethg032u8pmp" path="res://scenes/Guard.tscn" id="4_guard"]
 [ext_resource type="PackedScene" uid="uid://cy5h7k8mam0n1" path="res://scenes/PauseMenu.tscn" id="5_pause"]
 [ext_resource type="PackedScene" uid="uid://cntu0q7ajhxck" path="res://scenes/TaskListUI.tscn" id="6_tasklist"]
-[ext_resource type="PackedScene" path="res://scenes/Key.tscn" id="7_31777"]
+[ext_resource type="PackedScene" uid="uid://bmrko88eixl1d" path="res://scenes/Key.tscn" id="7_31777"]
+[ext_resource type="PackedScene" uid="uid://cx5euhmyr2mn2" path="res://scenes/Prisoner.tscn" id="8_3ykf2"]
+[ext_resource type="Script" uid="uid://ceirwwgojb7t8" path="res://Scripts/EscortZone.gd" id="9_escortzone"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_utknr"]
+vertices = PackedVector3Array(-12.01462, 1.1625345, -12.01462, -12.01462, 1.1625345, 11.98538, 11.98538, 1.1625345, 11.98538, 11.98538, 1.1625345, -12.01462)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_escortzone"]
+size = Vector3(6.0615234, 4.109131, 4.388672)
 
 [node name="Node3D" type="Node3D" unique_id=1496560142]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2042170856]
-transform = Transform3D(1.0011696, 0, 0, 0, 1.0011696, 0, 0, 0, 1.0011696, 0, 0, 0)
-use_collision = true
-size = Vector3(25, 1, 25)
-material = ExtResource("1_dsarw")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=681514618]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.870668, 0.8204863, -9.666602)
@@ -29,13 +33,31 @@ size = Vector3(0.8330078, 0.86621094, 5.3808594)
 material = ExtResource("2_gno7s")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=163810171]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.870668, 1.6201243, -11.925703)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.870819, 1.6201243, -11.925282)
 use_collision = true
 size = Vector3(0.8330078, 0.86621094, 2.2418213)
 material = ExtResource("2_gno7s")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=50849208]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.870668, 1.6201243, -7.40206)
+use_collision = true
+size = Vector3(0.8330078, 0.86621094, 2.2418213)
+material = ExtResource("2_gno7s")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="." unique_id=112935069]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, -1.3113444, 0.8330965, -10.197741)
+use_collision = true
+size = Vector3(0.8330078, 0.86621094, 3.683838)
+material = ExtResource("2_gno7s")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="." unique_id=943428334]
+transform = Transform3D(1.9106855e-15, -1, 8.742278e-08, -1, 1.9106855e-15, 4.371139e-08, -4.371139e-08, -8.742278e-08, -1, 0.947335, 0.8329458, -9.398102)
+use_collision = true
+size = Vector3(0.8330078, 0.86621094, 2.2418213)
+material = ExtResource("2_gno7s")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="." unique_id=1961824497]
+transform = Transform3D(1.9106855e-15, -1, 8.742278e-08, -1, 1.9106855e-15, 4.371139e-08, -4.371139e-08, -8.742278e-08, -1, -3.5758865, 0.8330965, -9.398102)
 use_collision = true
 size = Vector3(0.8330078, 0.86621094, 2.2418213)
 material = ExtResource("2_gno7s")
@@ -53,7 +75,7 @@ size = Vector3(0.8330078, 3.3833008, 0.2159729)
 material = ExtResource("2_gno7s")
 
 [node name="ProtoController" parent="." unique_id=1509553934 instance=ExtResource("2_viwfl")]
-transform = Transform3D(0.030817593, 0, -0.999525, 0, 1, 0, 0.999525, 0, 0.030817593, 6.707566, 0.63239753, -9.822474)
+transform = Transform3D(-0.95749086, 0, -0.28846365, 0, 1, 0, 0.28846365, 0, -0.95749086, 6.707566, 0.63239753, -0.2588253)
 
 [node name="Guard" parent="." unique_id=981749637 instance=ExtResource("4_guard")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.89775, 1.4064195, -9.826111)
@@ -70,3 +92,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93002, 1.6258126, -4.941332
 
 [node name="Key3" parent="." unique_id=1863558422 instance=ExtResource("7_31777")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93002, 1.6258126, -3.5243704)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1915514115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00015115738, -0.16311932, 0.00042152405)
+navigation_mesh = SubResource("NavigationMesh_utknr")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=2042170856]
+transform = Transform3D(1.0011696, 0, 0, 0, 1.0011696, 0, 0, 0, 1.0011696, 0, 0.16311932, 0)
+use_collision = true
+size = Vector3(25, 1, 25)
+material = ExtResource("1_dsarw")
+
+[node name="Prisoner" parent="." unique_id=503351036 node_paths=PackedStringArray("final_position") instance=ExtResource("8_3ykf2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.917816, 1.4115397, 3.7498083)
+final_position = NodePath("../EscortEndPosition")
+
+[node name="EscortZone" type="Area3D" parent="." unique_id=600551289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1737068, 1.6195002, -8.892796)
+script = ExtResource("9_escortzone")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EscortZone" unique_id=1321440120]
+shape = SubResource("BoxShape3D_escortzone")
+
+[node name="EscortEndPosition" type="Marker3D" parent="." unique_id=190803724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4462469, 1.5, -9.224304)

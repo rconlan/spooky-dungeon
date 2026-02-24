@@ -204,19 +204,19 @@ func _check_task_completion():
 	
 	# Determine which messages to show
 	var messages: Array[String] = []
+	var should_open_gate = false
 	if all_complete:
 		# All tasks including escort are done
 		if has_given_second_tasks:
 			messages = ["Excellent. All tasks complete."]
 		else:
 			# Just the keys are done, give escort mission
-			messages = ["Good. Prisoner 12 needs to be escorted to the containment zone.", "Find him and bring him to block A."]
+			messages = ["Good...", "Prisoner 12 is being relocated", "Find him and bring him to block A."]
 			TaskManager.remove_task("find_keys")
 			TaskManager.add_task("escort_prisoner", "Escort Prisoner 12 to Containment Block A")
 			given_task_ids.append("escort_prisoner")
 			has_given_second_tasks = true
-			# Signal the prison gate to open
-			TaskManager.open_prison_gate.emit()
+			should_open_gate = true
 	else:
 		# Check what's incomplete
 		if has_given_second_tasks and not TaskManager.is_task_completed("escort_prisoner"):
@@ -265,6 +265,10 @@ func _check_task_completion():
 		1.0,
 		rotation_duration
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
+	# Open prison gate after dialogue finishes if keys were confirmed
+	if should_open_gate:
+		TaskManager.open_prison_gate.emit()
 	
 	# Show prompt if player still in range
 	if player_in_range:

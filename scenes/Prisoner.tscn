@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cx5euhmyr2mn2"]
+
+[ext_resource type="Script" uid="uid://clbb8mwbf2j3s" path="res://Scripts/EscortableNPC.gd" id="1_escort"]
+[ext_resource type="FontFile" uid="uid://ierhtwwljrq" path="res://assets/fonts/SpecialElite-Regular.ttf" id="2_font"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_prisoner"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_body"]
+albedo_color = Color(0.8, 0.4, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_face"]
+albedo_color = Color(0.9, 0.7, 0.5, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_interact"]
+radius = 2.5
+height = 5.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_detect"]
+radius = 0.5
+height = 2.0
+
+[node name="Prisoner" type="Node3D" unique_id=827876118]
+script = ExtResource("1_escort")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=484313884]
+mesh = SubResource("CapsuleMesh_prisoner")
+material = SubResource("StandardMaterial3D_body")
+
+[node name="FaceMarker" type="CSGBox3D" parent="." unique_id=921534989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.5)
+size = Vector3(0.3, 0.3, 0.15)
+material = SubResource("StandardMaterial3D_face")
+
+[node name="InteractionArea" type="Area3D" parent="." unique_id=1811920057]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=266348191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("CapsuleShape3D_interact")
+
+[node name="PromptLabel" type="Label3D" parent="." unique_id=1489072835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37199664, -1.0198262)
+billboard = 1
+text = "E - Talk"
+font = ExtResource("2_font")
+font_size = 24
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=602731908]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+avoidance_enabled = true
+
+[node name="DetectionArea" type="Area3D" parent="." unique_id=1234567890]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+shape = SubResource("CapsuleShape3D_detect")

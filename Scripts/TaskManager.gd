@@ -11,6 +11,7 @@ signal open_prison_gate  # Emitted when guard confirms keys are collected
 var active_tasks: Dictionary = {}  # task_id -> TaskData
 var keys_collected: int = 0
 var keys_required: int = 3
+var debug_key_pressed: bool = false  # Debounce for debug key
 
 func add_task(task_id: String, description: String) -> void:
 	if active_tasks.has(task_id):
@@ -76,3 +77,34 @@ func get_key_count() -> int:
 
 func get_keys_required() -> int:
 	return keys_required
+
+func _process(_delta):
+	# Debug: Press T to skip to escort scenario
+	if Input.is_physical_key_pressed(KEY_T):
+		if not debug_key_pressed:
+			debug_key_pressed = true
+			skip_to_escort_scenario()
+	else:
+		debug_key_pressed = false
+
+## Debug function: Skip key collection and jump to escort scenario
+func skip_to_escort_scenario() -> void:
+	# Set keys to required amount
+	keys_collected = keys_required
+	
+	# Complete find_keys task if it exists
+	if active_tasks.has("find_keys"):
+		complete_task("find_keys")
+	else:
+		# Add it first if it doesn't exist
+		add_task("find_keys", "Find your 3 keys")
+		complete_task("find_keys")
+	
+	# Add escort task if not already added
+	if not active_tasks.has("escort_prisoner"):
+		add_task("escort_prisoner", "Escort Prisoner 12 to Containment Block A")
+	
+	# Open the prison gate
+	open_prison_gate.emit()
+	
+	print("DEBUG: Skipped to escort scenario - Press E to interact with prisoner")

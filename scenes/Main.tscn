@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://ethg032u8pmp" path="res://scenes/Guard.tscn" id="7_nxtc6"]
 [ext_resource type="PackedScene" uid="uid://bmrko88eixl1d" path="res://scenes/Key.tscn" id="8_jlsqs"]
 [ext_resource type="Script" uid="uid://dpq513vl22s5t" path="res://Scripts/PrisonGate.gd" id="9_prison"]
+[ext_resource type="PackedScene" uid="uid://cntu0q7ajhxck" path="res://scenes/TaskListUI.tscn" id="10_tasklist"]
+[ext_resource type="PackedScene" uid="uid://prisoner_scene_01" path="res://scenes/Prisoner.tscn" id="11_prisoner"]
+[ext_resource type="Script" path="res://Scripts/EscortZone.gd" id="12_escortzone"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_noarx"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -29,10 +32,20 @@ tonemap_mode = 4
 fog_light_color = Color(0.83137256, 0.73333335, 0.6745098, 1)
 fog_light_energy = 0.1
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_escortzone"]
+size = Vector3(5, 3, 5)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_main"]
+vertices = PackedVector3Array()
+polygons = []
+
 [node name="Node3D" type="Node3D" unique_id=1965871310]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1390452728]
 environment = SubResource("Environment_r3fl7")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_main")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=349691191]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -76,12 +89,14 @@ transform = Transform3D(1.4156309, 0, 0, 0, 0.89796716, 0, 0, 0, 1.1255723, 20.9
 script = ExtResource("9_prison")
 
 [node name="ProtoController" parent="." unique_id=1509553934 instance=ExtResource("1_uu6xs")]
-transform = Transform3D(0.6581903, 0, -0.7528516, 0, 1, 0, 0.7528516, 0, 0.6581903, 13.545862, 0.5524944, 51.21971)
+transform = Transform3D(0.6581903, 0, -0.7528516, 0, 1, 0, 0.7528516, 0, 0.6581903, 20.551037, 0.5524944, 32.786194)
 
 [node name="PauseMenu" parent="." unique_id=1819553514 instance=ExtResource("6_pause")]
 
 [node name="Guard" parent="." unique_id=1317992597 instance=ExtResource("7_nxtc6")]
 transform = Transform3D(-0.040794462, 0, -0.99916756, 0, 1, 0, 0.99916756, 0, -0.040794462, 17.099457, 1.0801394, 32.31577)
+
+[node name="TaskListUI" parent="." unique_id=307670482 instance=ExtResource("10_tasklist")]
 
 [node name="Key" parent="." unique_id=882443755 instance=ExtResource("8_jlsqs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.72246, 1.5073566, 28.760378)
@@ -91,3 +106,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.436638, 1.5073566, 28.7603
 
 [node name="Key3" parent="." unique_id=651494718 instance=ExtResource("8_jlsqs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.436638, 1.5073566, 33.715927)
+
+[node name="Prisoner" parent="." instance=ExtResource("11_prisoner")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 1.0, 19.0)
+final_position = NodePath("../EscortEndPosition")
+
+[node name="EscortZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 1.5, 32.0)
+script = ExtResource("12_escortzone")
+zone_name = "Containment Block A"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EscortZone"]
+shape = SubResource("BoxShape3D_escortzone")
+
+[node name="EscortEndPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0, 1.5, 30.0)
